@@ -19,11 +19,11 @@ contract Booker {
     event Booked(address partner, uint indexed room, uint hour, string indexed company);
     event Cancelled(address partner, string indexed company);
 
-    mapping(string => mapping(uint => Room)) public _rooms;
-    mapping(address => Reservation) public _reservations;
+    mapping(string => mapping(uint => Room)) internal _rooms;
+    mapping(address => Reservation) internal _reservations;
 
-    string public _companyOne;
-    string public _companyTwo;
+    string private _companyOne;
+    string private _companyTwo;
 
     constructor(string memory companyOne, string memory companyTwo) {
         for (uint c = 1; c <= 10; c++) {
