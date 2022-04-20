@@ -67,9 +67,7 @@ contract Booker {
         require(hour <= 20 && hour >= 8, "Availability between the hours of: 8-20");
         require(room <= 10 && room >= 1, "Availability between rooms: 1-10");
 
-        string memory requestedRoom = _rooms[company][room].company;
-
-        if (!_rooms[company][room].reservedHours[hour] && keccak256(abi.encodePacked(_rooms[company][room].company)) == keccak256(abi.encodePacked(requestedRoom))) {
+        if (!_rooms[company][room].reservedHours[hour] && keccak256(abi.encodePacked(company)) == keccak256(abi.encodePacked(_rooms[company][room].company))) {
             return true;
         } else {
             return false;
