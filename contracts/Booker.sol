@@ -22,9 +22,6 @@ contract Booker {
     mapping(string => mapping(uint => Room)) internal _rooms;
     mapping(address => Reservation) internal _reservations;
 
-    string private _companyOne;
-    string private _companyTwo;
-
     constructor(string memory companyOne, string memory companyTwo) {
         for (uint c = 1; c <= 10; c++) {
             _rooms[companyOne][c].company = companyOne;
