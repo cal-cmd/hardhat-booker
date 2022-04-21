@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 
 describe("Booker contract", function () {
-  it("should allow only booking one reservation", async function () {
+  it("should allow booking only one reservation", async function () {
     const [owner] = await ethers.getSigners();
 
     const Booker = await ethers.getContractFactory("Booker");

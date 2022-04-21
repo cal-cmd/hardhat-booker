@@ -29,7 +29,7 @@ contract Booker {
         }
     }
 
-    function book(uint room, uint hour, string memory company) public {
+    function book(uint room, uint hour, string memory company) external {
         string memory requestedRoom = _rooms[company][room].company;
 
         require(!_reservations[msg.sender].reserved, "Already booked for another room");
@@ -49,7 +49,7 @@ contract Booker {
         emit Booked(msg.sender, room, hour, company);
     }
 
-    function cancel() public {
+    function cancel() external {
         require(_reservations[msg.sender].reserved, "Reservation not booked");
 
         string memory company = _reservations[msg.sender].company;
@@ -63,7 +63,7 @@ contract Booker {
         emit Cancelled(msg.sender, company);
     }
 
-    function isRoomAvailable(uint room, uint hour, string memory company) public view returns(bool) {
+    function isRoomAvailable(uint room, uint hour, string memory company) external view returns(bool) {
         require(hour <= 20 && hour >= 8, "Availability between the hours of: 8-20");
         require(room <= 10 && room >= 1, "Availability between rooms: 1-10");
 
